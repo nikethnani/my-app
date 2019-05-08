@@ -1,8 +1,8 @@
 node{
    stage('SCM Checkout'){
-     sh git 'https://github.com/nikethnani/my-app.git'
+     git 'https://github.com/nikethnani/my-app.git'
    }
-   stage('Compile-Package'){
+   stage('Maven'){
      sh 'mvn clean package'
    }
    stage('Deploy to Tomcat'){
