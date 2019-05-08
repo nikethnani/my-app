@@ -2,14 +2,21 @@ node{
    stage('SCM Checkout'){
      git 'https://github.com/nikethnani/my-app.git'
    }
-   stage('Maven'){
-     sh 'mvn clean package'
+   stage('maven'){
+      // Get maven home path
+      sh 'mvn clean package'
    }
    stage('Deploy to Tomcat'){
       
       sshagent(['Pipeline_tomcat']) {
-         sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@13.126.220.203:/opt/apache-tomcat-8.5.39/webapps'
-         
+         sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@13.126.220.203:/opt/apache-tomcat-8.5.39$/webapps/'
+      }
+   }
+   stage('Email Notification'){
+      mail bcc: '', body: '''Hi Welcome to jenkins email alerts
+      Thanks
+      Hari''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'nikethnani@gmail.com'
+   
    }
 
 }
