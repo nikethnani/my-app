@@ -4,7 +4,7 @@
    }
    stage('Compile-Package'){
       // Get maven home path
-      def mvnhome =  tool name: 'maven-3', type: 'maven'   
-      sh "${mvnhome}/bin/mvn package"
+      def mvnhome = tool name: 'MAVEN', type: 'maven'
+      sh "${mvnhome}/bin/mvn package"    
    }
 }
